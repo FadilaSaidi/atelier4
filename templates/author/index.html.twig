@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AuthorController!{% endblock %}
+
+{% block body %}
+<table border="1">
+<thead>
+<th>Id</th>
+<th>Nom</th>
+<th>email</th>
+<th>Actions</th>
+
+</thead>
+<tbody>
+{% for author in authors %}
+<tr>
+<td>{{author.id}}</td>
+<td>{{author.username}}</td>
+<td>{{author.email}}</td>
+<td>
+<a href="{{ path('editauthor', {'id': author.id}) }}">edit</a>
+<a href="{{ path('deleteauthor', {'id': author.id}) }}">delete</a>
+</td>
+
+{% endfor %}
+
+
+
+</tbody>
+</table>
+{% endblock %}
