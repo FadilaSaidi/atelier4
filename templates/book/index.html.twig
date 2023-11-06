@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookController!{% endblock %}
+
+{% block body %}
+<table border="1">
+
+<thead>
+<th>title</th>
+<th>Publication date</th>
+<th>Published</th>
+<th>Category</th>
+<th>Author</th>
+<th>Actions</td>
+</thead>
+<tbody>
+{% for book in books %}
+<tr>
+<td>{{book.title}}</td>
+ <td>{{ book.publicationDate | date('M-d-Y') }}</td>
+<td>{{book.Published}}</td>
+<td>{{book.category}}</td>
+<td>{{book.relation}}</td>
+<td><a href="{{ path('editbook', {'id': book.id}) }}">edit</a>
+<a href="{{ path('deletebook', {'id': book.id}) }}">delete</a>
+<a href="{{ path('showbook', {'id': book.id}) }}">show</a>
+</td>
+{% endfor %}
+
+
+
+</tbody>
+</table>
+  <p>Number of published books : {{ numPublishedBooks }}</p>
+ <p>Number of Unpublished books : {{ numUnpublishedBooks }}</p>
+ <p> {{noBooksFound}}<p>
+{% endblock %}
